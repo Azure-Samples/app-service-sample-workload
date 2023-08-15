@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using SimpleWebApp.Models;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using Microsoft.Extensions.Configuration;
 
 
 namespace SimpleWebApp.Controllers
@@ -39,9 +36,7 @@ namespace SimpleWebApp.Controllers
 
         private List<string> GetData()
         {
-            //var connString = _configuration.GetConnectionString("adventureWorksConnectionString");
-
-            var connString = _configuration["adWorksConnString"];
+            var connString = _configuration["AZURE_SQL_CONNECTIONSTRING"];
             var categories = new List<string>();
 
             using (var sqlConn = new SqlConnection(connString))
@@ -49,7 +44,7 @@ namespace SimpleWebApp.Controllers
                 using (var cmd = new SqlCommand()
                 {
                     CommandText = "SELECT * from [SalesLT].[ProductCategory]",
-                    CommandType = CommandType.Text,
+                    CommandType = System.Data.CommandType.Text,
                     Connection = sqlConn
                 })
                 {
@@ -68,10 +63,11 @@ namespace SimpleWebApp.Controllers
             return categories;
         }
 
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

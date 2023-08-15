@@ -1,32 +1,12 @@
-using Azure.Identity;
-
 var builder = WebApplication.CreateBuilder(args);
 
-//var endpoint = Environment.GetEnvironmentVariable("WEBSITE_APP_CONFIGURATION_ENDPOINT");
-//var identity = Environment.GetEnvironmentVariable("WEBSITE_APP_CONFIGURATION_MANAGED_IDENTITY");
-//Console.WriteLine("This would have been good to know earlier");
 
-//if (string.IsNullOrEmpty(endpoint))
-//{
-//    throw new ApplicationException($"The Environment Variable WEBSITE_APP_CONFIGURATION_ENDPOINT must be set");
-//}
-//if (string.IsNullOrEmpty(identity))
-//{
-//    throw new ApplicationException($"The Environment Variable WEBSITE_APP_CONFIGURATION_MANAGED_IDENTITY must be set");
-//}
-
-//builder.Configuration.AddAzureAppConfiguration(options =>
-//{
-//    options.Connect(new Uri(endpoint), new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = identity }))
-//        .ConfigureKeyVault(kv =>
-//        {
-//            kv.SetCredential(new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = identity }));
-//        });
-//});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddAzureWebAppDiagnostics();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
