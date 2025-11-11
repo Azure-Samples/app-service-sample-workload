@@ -2,7 +2,6 @@
 
 This GitHub repository contains a simple web application sample that connects to an Azure SQL Database. The sample application supports reference implementations of articles published in the Azure Architecture Center (AAC).
 
-- [App Service basic Implementation](https://github.com/Azure-Samples/app-service-basic-implementation)
 - [Baseline highly available zone-redundant web application](https://github.com/Azure-Samples/app-service-baseline-implementation)
 
 ## Features
