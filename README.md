@@ -17,7 +17,7 @@ The sample project provides the following features:
 
 ### Prerequisites
 
-- [.Net 9.0](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [.Net 10.0](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [Visual Studio Community 2022](https://visualstudio.microsoft.com/vs/community/)
 - [Adventureworks database example](https://learn.microsoft.com/sql/samples/adventureworks-install-configure)
 
